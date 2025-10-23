@@ -21,7 +21,7 @@ function sendEmail(subject, body, contentType) {
     subject = subject || 'No Subject';
     body = body || 'No Body';
     contentType = contentType || 'text/plain';
-    var email_sql = "CALL SYSTEM$SEND_EMAIL('EMAIL_INT_TESTT', 'HarshParaghumar.Parikh@eversana.com,EDAAdmins@Eversana.com', ?, ?, ?)";
+    var email_sql = "CALL SYSTEM$SEND_EMAIL('EMAIL_INT_TESTT', 'abc@xyz.com,EDAAdmins@xyz.com', ?, ?, ?)";
     var stmt = snowflake.createStatement({
       sqlText: email_sql,
       binds: [subject, body, contentType]
