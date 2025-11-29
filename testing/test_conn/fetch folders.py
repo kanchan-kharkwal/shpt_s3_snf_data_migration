@@ -7,9 +7,9 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path="config/aws_creds.env")
 
 # SharePoint & Graph API Configuration
-TENANT_ID = "e4f40be7-af4a-48c6-aca7-b06218cfc75e"
-CLIENT_ID = "16d55656-56ba-4251-b4a5-7696e710fff8"
-SHAREPOINT_SITE_PATH = "eversana.sharepoint.com:/teams/FIN-EVERSANAOptics"
+TENANT_ID = "....fc75e"
+CLIENT_ID = "....0fff8"
+SHAREPOINT_SITE_PATH = "abc.sharepoint.com:/teams/abc"
 
 # Folder location to parse (NO "root/" prefix here)
 BASE_FOLDER = "Data Integration/Source Data/Adaptive/Archive"
@@ -43,3 +43,4 @@ print(f"📂 Files inside {BASE_FOLDER}:")
 for item in items:
     if "file" in item:   # Only list files
         print(f"  {item['name']}")
+
