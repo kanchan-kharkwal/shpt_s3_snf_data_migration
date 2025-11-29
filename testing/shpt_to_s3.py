@@ -19,7 +19,7 @@ TENANT_ID = os.getenv("TENANT_ID")
 CLIENT_ID = os.getenv("CLIENT_ID") 
 SHAREPOINT_SITE_PATH = os.getenv("SHAREPOINT_SITE_PATH")
 BASE_PARENT_FOLDER = os.getenv("BASE_PARENT_FOLDER")
-S3_BUCKET = "eda-dev-eversana"
+S3_BUCKET = "eda-dev-abc"
 S3_KEY_BASE = "Enterprise_Metrics_Data/incoming/"
 
 # Boto3 client
@@ -262,7 +262,7 @@ def process_folder(drive_id, headers, folder_path, client_name, client_path, sf_
                     try:
                         cursor = sf_conn.cursor()
                         # Example: call your SP (replace with actual name/params)
-                        cursor.execute(f"CALL COPY_FROM_S3_TO_RAW_HP_TEST('{client_name}','{process_name}');")
+                        cursor.execute(f"CALL COPY_FROM_S3_TO_RAW_TEST('{client_name}','{process_name}');")
                         print(f" Triggered Snowflake SP for {client_name} - {process_name}")
                     except Exception as e:
                         print(f" Failed to call Snowflake SP for {client_name} - {process_name}: {e}")
@@ -317,3 +317,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
