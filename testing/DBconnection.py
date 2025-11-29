@@ -14,7 +14,7 @@ def db_connections(sourcedb, user):
     connection_path = "./"
     if sourcedb == "SNOWFLAKE":
         try:
-            snowflake_conn = serviceaccountcon.get_eversana_secure_connection()  # 04-10-2022
+            snowflake_conn = serviceaccountcon.get_secure_connection()  # 04-10-2022
             print(snowflake_conn)
             print("Connected Successfully to {}...".format(sourcedb))
         except Exception as e:
@@ -24,7 +24,7 @@ def db_connections(sourcedb, user):
     # 05-01-2023
     elif sourcedb == "SNOWFLAKE_WEST":
         try:
-            snowflake_west_conn = serviceaccountcon.get_eversana_secure_connection_WEST()
+            snowflake_west_conn = serviceaccountcon.get_secure_connection_WEST()
             print("Connected Successfully to {}...".format(sourcedb))
 
         except Exception as e:
@@ -51,4 +51,5 @@ def db_connections(sourcedb, user):
     #     # return sqlserver_conn
     else:
         print("Not Connected ...")
+
  
