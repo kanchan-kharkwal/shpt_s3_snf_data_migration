@@ -12,12 +12,12 @@ import time
 load_dotenv(dotenv_path="config/aws_creds.env")
 
 # --- CONFIG ---
-TENANT_ID = "e4f40be7-af4a-48c6-aca7-b06218cfc75e"
-CLIENT_ID = "16d55656-56ba-4251-b4a5-7696e710fff8"
-SHAREPOINT_SITE_PATH = "eversana.sharepoint.com:/teams/FIN-EVERSANAOptics"
+TENANT_ID = "....c75e"
+CLIENT_ID = "....fff8"
+SHAREPOINT_SITE_PATH = "abc.sharepoint.com:/teams/abc"
 BASE_PARENT_FOLDER = "Data Integration/Source Data"
-S3_BUCKET = "eda-dev-eversana"
-S3_KEY_BASE = "vj_test_dataload/"
+S3_BUCKET = "eda-dev-abc"
+S3_KEY_BASE = "dataload/"
 
 # Boto3 client
 s3_client = boto3.client("s3")
@@ -47,8 +47,6 @@ def setup_auth():
 
     return headers, drive_id
 
-
-# ================== HELPERS ==================
 def download_file_with_retry(url, headers, retries=3, delay=5):
     for attempt in range(retries):
         resp = requests.get(url, headers=headers)
@@ -62,7 +60,6 @@ def download_file_with_retry(url, headers, retries=3, delay=5):
             resp.raise_for_status()
     resp.raise_for_status()
 
-
 def extract_process_name(filename: str) -> str:
     """Extracts process name by removing date and extension."""
     name_only = os.path.splitext(filename)[0]
@@ -74,7 +71,6 @@ def extract_process_name(filename: str) -> str:
 
     process_name = "_".join(parts)
     return process_name.lower()
-
 
 def list_subfolders(drive_id, headers, folder_path):
     """List immediate subfolders under a given SharePoint path."""
@@ -142,7 +138,6 @@ def read_file_convert_to_csv(content, file_name):
         print(f"❌ Failed to process {file_name}: {e}")
         return None
 
-
 def process_folder(drive_id, headers, folder_path, local_prefix, client_name):
     """Recursively process a folder and download/clean CSV/Excel files."""
     folder_url = f"https://graph.microsoft.com/v1.0/drives/{drive_id}/root:/{folder_path}:/children"
@@ -190,9 +185,9 @@ def process_folder(drive_id, headers, folder_path, local_prefix, client_name):
                 #     Body=csv_buffer.getvalue()
                 # )
 
-                # print(f"✅ Uploaded to s3://{S3_BUCKET}/{s3_prefix + s3_filename}")
+                # print(f"Uploaded to s3://{S3_BUCKET}/{s3_prefix + s3_filename}")
 
-                print(f"✅ Saved cleaned file at {local_file_path}")
+                print(f"Saved cleaned file at {local_file_path}")
             except Exception as e:
                 print(f"❌ Failed to process {item_path}: {e}")
 
@@ -229,3 +224,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
