@@ -3,8 +3,8 @@ import requests
 from msal import PublicClientApplication
 
 # --- SharePoint & Graph API Configuration ---
-TENANT_ID = "e4f40be7-af4a-48c6-aca7-b06218cfc75e"
-CLIENT_ID = "16d55656-56ba-4251-b4a5-7696e710fff8"
+TENANT_ID = "abc...."
+CLIENT_ID = "1....8"
 SHAREPOINT_SITE_PATH = "abc.sharepoint.com:/teams/FIN-abc"
 
 def get_auth_token():
@@ -123,4 +123,5 @@ if __name__ == "__main__":
             print("Exiting due to authentication failure.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
 
