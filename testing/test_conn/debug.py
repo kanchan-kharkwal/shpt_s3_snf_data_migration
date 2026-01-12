@@ -5,7 +5,7 @@ from msal import PublicClientApplication
 # --- SharePoint & Graph API Configuration ---
 TENANT_ID = "e4f40be7-af4a-48c6-aca7-b06218cfc75e"
 CLIENT_ID = "16d55656-56ba-4251-b4a5-7696e710fff8"
-SHAREPOINT_SITE_PATH = "eversana.sharepoint.com:/teams/FIN-EVERSANAOptics"
+SHAREPOINT_SITE_PATH = "abc.sharepoint.com:/teams/FIN-abc"
 
 def get_auth_token():
     """
@@ -22,7 +22,7 @@ def get_auth_token():
         print("-----------------------------------")
 
         if "access_token" in result:
-            print("✅ Successfully acquired access token.")
+            print(" Successfully acquired access token.")
             return result["access_token"]
         else:
             # Provide more specific error messages for common failure cases
@@ -74,10 +74,10 @@ def explore_folder_structure(drive_id, headers, folder_path="", level=0):
     
     if folder_path == "":
         folder_url = f"https://graph.microsoft.com/v1.0/drives/{drive_id}/root/children"
-        print(f"{indent}📁 ROOT FOLDER:")
+        print(f"{indent} ROOT FOLDER:")
     else:
         folder_url = f"https://graph.microsoft.com/v1.0/drives/{drive_id}/root:/{folder_path}:/children"
-        print(f"{indent}📁 {folder_path}:")
+        print(f"{indent} {folder_path}:")
     
     try:
         resp = requests.get(folder_url, headers=headers)
@@ -87,7 +87,7 @@ def explore_folder_structure(drive_id, headers, folder_path="", level=0):
         for item in items:
             item_name = item["name"]
             if "folder" in item:
-                # print(f"{indent}  📂 {item_name}/")
+                # print(f"{indent}   {item_name}/")
                 # Only go 3 levels deep to avoid too much output
                 if level < 3:
                     if folder_path == "":
@@ -118,8 +118,9 @@ if __name__ == "__main__":
                 # This will start the exploration at the root folder to find the correct path
                 explore_folder_structure(drive_id, headers)
             else:
-                print("❌ Exiting due to failure to get SharePoint IDs.")
+                print(" Exiting due to failure to get SharePoint IDs.")
         else:
-            print("❌ Exiting due to authentication failure.")
+            print("Exiting due to authentication failure.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
