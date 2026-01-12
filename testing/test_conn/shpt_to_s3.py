@@ -19,7 +19,7 @@ TENANT_ID = os.getenv("TENANT_ID")
 CLIENT_ID = os.getenv("CLIENT_ID") 
 SHAREPOINT_SITE_PATH = os.getenv("SHAREPOINT_SITE_PATH")
 BASE_PARENT_FOLDER = os.getenv("BASE_PARENT_FOLDER")
-S3_BUCKET = "eda-dev-eversana"
+S3_BUCKET = "eda-dev-abc"
 S3_KEY_BASE = "Enterprise_Metrics_Data/incoming/"
 
 # Boto3 client
@@ -319,3 +319,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
